@@ -387,10 +387,10 @@ class ET_Client extends SoapClient
             $payload->grant_type = 'client_credentials';
 		}
 
-		if (!empty(trim($this->accountId))){
+		if (!empty(trim($this->accountId ?? ''))){
             $payload->account_id = $this->accountId;
 		}
-		if (!empty(trim($this->scope))){
+		if (!empty(trim($this->scope ?? ''))){
             $payload->scope = $this->scope;
 		}
 
@@ -954,7 +954,7 @@ class ET_Client extends SoapClient
 	 * @param string $str string to be validated
 	 */
 	function isNullOrEmptyString($str){
-        return (!isset($str) || trim($str) === '');
+        return (!isset($str) || trim($str ?? '') === '');
     }
 }
 
